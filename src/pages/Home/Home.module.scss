@@ -1,0 +1,8 @@
+@import '../../styles/variables';
+
+.container {
+    // @include flex-center-column;
+    width: 100%;
+    max-width: 1980px;
+    margin: 0 auto;
+}

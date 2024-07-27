@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+
+.container {
+    @include flex-center-column;
+    width: 100%;
+    max-width: 1920px;
+    padding: 2rem 20rem;
+    gap: 5rem;
+    div {
+        @include flex-center-column;
+        position: relative;
+        gap: 2rem;
+        width: 100%;
+        h2 {
+            align-self: flex-start;
+            text-transform: uppercase;
+            color: $pink;
+        }
+        ul {
+            @include flex-center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 8rem;
+            li {
+                @include flex-center-column;
+                width: 154px;
+                img {
+                    position: relative;
+                    width: 100%;
+                    margin-bottom: 3px;
+                    cursor: pointer;
+                }
+                a {
+                    max-width: 100%;
+                    color: $gray;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-overflow: ellipsis;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                span {
+                    color: $pink;
+                    font-size: 20px;
+                    font-weight: $extra;
+                }
+            }
+        }
+        .modal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            width: 300px;
+            height: auto;
+            top: var(--modal-top);
+            left: var(--modal-left);
+            transform: translate(2rem, -2rem);
+            img {
+                width: 100%;
+            }
+        }
+        .prev, 
+        .next {
+            position: absolute;
+            width: fit-content;
+            z-index: 1;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: filter .2s;
+            svg {
+                color: $purple;
+            }
+            &:hover {
+                filter: brightness(.9);
+            }
+        }
+        .prev {
+            left: -3rem;
+        }
+        .next {
+            right: -3rem;
+        }
+    }
+
+    @media (max-width: 426px) {
+        max-width: 425px;
+        padding: 2rem 1rem;
+        div {
+            ul {
+                overflow: hidden;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+    }
+}

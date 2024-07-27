@@ -1,0 +1,34 @@
+@import './variables';
+
+:root {
+    font-size: 62.5%; // 1rem = 10px
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: $white;
+    color: $dark-gray;
+    width: 100%;
+    font-size: 1.6rem;
+    &.overflow-hidden {
+        overflow: hidden;
+    }    
+}
+
+a {
+    color: $dark-gray;
+    font-weight: $medium;
+    transition: filter .2s;
+}
+
+a:hover {
+    filter: brightness(.9);
+}

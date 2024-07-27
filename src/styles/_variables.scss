@@ -1,0 +1,29 @@
+// colors
+$white: #fff;
+$gray: #585858;
+$dark-gray: #2c2c2c;
+$light-gray: #ababab;
+$black: #000;
+$pink: #F090bc;
+$yellow: #fde2c0;
+$purple: #e1c2f6;
+// font-weight
+$thin: 300;
+$regular: 400;
+$medium: 500;
+$semi: 600;
+$bold: 700;
+$extra: 800;
+// $banner-bg: url('../../assets/img/banner.png');
+// $card-bg: url('../../assets/img/card-bg.png');
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}

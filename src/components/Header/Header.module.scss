@@ -1,0 +1,291 @@
+@import '../../styles/variables';
+
+@keyframes burguer-open {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+  }
+
+.container {
+    @include flex-center-column;
+    width: 100%;
+
+    .container__top {
+        @include flex-center;
+        width: 100%;
+        // max-width: 1980px;
+        padding: 1rem 20rem;
+        gap: 3rem;
+        background: radial-gradient(circle, $light-gray 0%, $gray 100%);
+
+        .container__top__logo {
+            a {
+                img {
+                    width: 300px;
+                }
+            }
+        }
+
+        .container__top__search {
+            @include flex-center;
+            position: relative;
+            width: 100%;
+            input {
+                @include flex-center;
+                width: 100%;
+                padding: 1rem 2rem;
+                border: none;
+                border-radius: 20px;
+                &:focus {
+                    outline: 2px solid $pink;
+                    color: $dark-gray;
+                }
+                &::placeholder {
+                    color: $light-gray;
+                }
+            }
+            label {
+                @include flex-center;
+                position: absolute;
+                right: 2rem;
+                gap: 2rem;
+                button {
+                    @include flex-center;
+                    background: none;
+                    border: none;
+                    transition: .2s;
+                    svg {
+                        color: $light-gray;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        filter: brightness(1.1);
+                        svg {
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .container__top__user {
+            @include flex-center-column;
+            width: 30rem;
+            gap: 1rem;
+            p {
+                width: 100%;
+                text-align: center;
+                a {
+                    transition: .2s;
+                    &:hover {
+                        color: $purple;
+                        filter: brightness(1.1);
+                    }
+                }
+            }
+            .container__top__user__avatar {
+                display: none;
+            }
+            div {
+                @include flex-center;
+                justify-content: space-evenly;
+                width: 100%;
+                // gap: 4rem;
+                button {
+                    @include flex-center;
+                    position: relative;
+                    background: none;
+                    border: none;
+                    transition: .2s;
+                    svg {
+                        color: $light-gray;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        filter: brightness(1.1);
+                        svg {
+                            color: $purple;
+                        }
+                    }
+                    span {
+                        @include flex-center;
+                        position: absolute;
+                        width: 15px;
+                        height: 15px;
+                        top: -3px;
+                        right: -10px;
+                        background: $white;
+                        // border: 1px solid $black;
+                        border-radius: 50%;
+                        font-size: 1rem;
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+
+        .container__top__hamburguer {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+          
+            .hamburguer__bar {
+              width: 30px;
+              height: 3px;
+              background-color: $pink;
+              position: relative;
+              border-radius: 20px;
+              transition: all 0.3s ease;
+          
+              &::before,
+              &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 30px;
+                height: 3px;
+                background-color: $pink;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+              }
+          
+              &::before {
+                top: -10px;
+              }
+          
+              &::after {
+                top: 10px;
+              }
+            }
+          
+            &.open .hamburguer__bar {
+              background-color: transparent;
+            }
+          
+            &.open .hamburguer__bar::before {
+              transform: rotate(45deg) translate(-5px, 5px);
+              top: 0;
+              background-color: $light-gray;
+            }
+          
+            &.open .hamburguer__bar::after {
+              transform: rotate(-45deg) translate(-5px, -5px);
+              top: 0;
+              background-color: $light-gray;
+            }
+          }
+    }
+
+    .container__nav {
+        @include flex-center;
+        width: 100%;
+        padding: 1rem;
+        background: $purple;
+        ul {
+            @include flex-center;
+            width: 100%;
+            li {
+                padding: 0 2rem;
+                text-transform: uppercase;
+                font-weight: $extra;
+                color: $gray;
+                border-right: 2px solid $yellow;
+                &:last-child {
+                    border-right: none;
+                }
+                span {
+                    transition: color .2s;
+                    &:hover {
+                        cursor: pointer;
+                        color: $yellow;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 426px) {
+        .container__top {
+            position: relative;
+            padding: 1rem 1rem 6rem;
+
+            .container__top__logo {
+                a {
+                    img {
+                        width: 150px;
+                    }
+                }            
+            }
+
+            .container__top__search {
+                position: absolute;
+                width: calc(100% - 3rem);
+                bottom: 2rem;
+            }
+
+            .container__top__user {
+                flex-direction: row;
+                justify-content: flex-end;
+                width: 100%;
+                p {
+                    display: none;
+                }
+                .container__top__user__avatar {
+                    @include flex-center;
+                    justify-content: flex-end;
+                    margin-right: 1rem;
+                }
+                div {
+                    gap: 2rem;
+                    button {
+                        svg {
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+
+            .container__top__hamburguer {
+                display: block;
+                z-index: 1;
+              }
+        }
+        .container__nav {
+            display: none;
+            &.open {
+                animation: burguer-open .3s forwards;
+                position: fixed;
+                top: 0;
+                right: 0;
+                padding-top: 60px;
+                display: block;
+                width: 80%;
+                // background-color: $light-gray;
+                ul {
+                    @include flex-center-column;
+                    width: 100%;
+                    li {
+                        width: 100%;
+                        border-right: none;
+                        border-bottom: 1px solid $yellow;
+                        padding: 1rem;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

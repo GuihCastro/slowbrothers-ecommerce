@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.container {
+    @include flex-center;
+    width: 100%;
+    max-width: 1920px;
+    height: 300px;
+    background: #c0c0c080;
+    h2 {
+        text-transform: uppercase;
+        color: $black;
+    }
+
+    @media (max-width: 426px) {
+        height: 120px;
+    }
+}
